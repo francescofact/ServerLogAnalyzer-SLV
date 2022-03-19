@@ -128,6 +128,13 @@ polygonSeries.mapPolygons.template.on("active", function (active, target) {
   previousPolygon = target;
 });
 
+chart.animate({
+    key: "rotationX",
+    from: 0,
+    to: 360,
+    duration: 30000,
+    loops: Infinity
+  });
 
 // Make stuff animate on load
 chart.appear(1000, 100);
@@ -150,7 +157,7 @@ let first = true;
 wind.scroll(function (event) {
     var scroll = wind.scrollTop();
     if (scroll >= wind.height()/3 *2){
-        presentations.fadeIn();
+        presentations.fadeIn("slow");
     } else {
         presentations.fadeOut();
     }

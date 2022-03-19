@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Timeline Style Navigation</title>
+  <title>SLV</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'>
@@ -11,6 +11,10 @@
     #chartdiv {
         width: 100% !important;
         height: 700px !important;
+    }
+
+    .active .nav__desc{
+      display:none;
     }
   </style>
 
@@ -25,26 +29,33 @@
       <ul class="nav"  style="display:block">
 
         <li role="presentation" class="active">
-          <a href="#section1">
-            <span class="nav__counter">01</span>
-            <h3 class="nav__title">Intro</h3>
+          <a href="#section0">
+            <span class="nav__counter">World</span>
             <p class="nav__body"><strong>Timeline-style navigation</strong>. Scroll down to see what happens, or click on a number in the nav.</p>
           </a>
         </li>
 
         <li role="presentation">
+          <a href="#section1">
+            <span class="nav__counter">#1 <span class="nav__desc">USA</span></span>
+            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/us.png"/> USA</h3>
+            <p class="nav__body"><strong>1535</strong> unique visitors</p>
+          </a>
+        </li>
+
+        <li role="presentation">
           <a href="#section2">
-            <span class="nav__counter">02</span>
-            <h3 class="nav__title">Section 2 Title</h3>
-            <p class="nav__body">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet condimentum lacus.</p>
+            <span class="nav__counter">#2 <span class="nav__desc">FR</span></span>
+            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/fr.png"/> France</h3>
+            <p class="nav__body"><strong>1277</strong> unique visitors</p>
           </a>
         </li>
 
         <li role="presentation">
           <a href="#section3">
-            <span class="nav__counter">03</span>
-            <h3 class="nav__title">Section 3 Title</h3>
-            <p class="nav__body">Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius mi, sit amet condimentum lacus.</p>
+            <span class="nav__counter">#3 <span class="nav__desc">CN</span></span>
+            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/cn.png"/> China</h3>
+            <p class="nav__body"><strong>662</strong> unique visitors</p>
           </a>
         </li>
         
@@ -75,8 +86,12 @@
       </ul>
     </nav>
 
-    <section class="section section0" id="section0">
+    <section class="section section-1" id="section-1">
       <div id="chartdiv"></div>
+    </section>
+
+    <section class="section section0" id="section0">
+      <h1>World</h1>
     </section>
 
     <section class="section section1" id="section1">
