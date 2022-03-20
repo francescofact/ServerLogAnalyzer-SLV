@@ -1,0 +1,4 @@
+tqdm>=4.32.2
+apachelogs
+geoip2
+pandas
