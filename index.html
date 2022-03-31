@@ -8,9 +8,15 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'>
   <link rel="stylesheet" href="css/scrollranks.css">
   <style>
-    #chartdiv {
+    #chartdiv{
         width: 100% !important;
         height: 700px !important;
+    }
+
+
+    #distchart{
+        width: 500px;
+        height: 500px;
     }
 
     .active .nav__desc{
@@ -30,8 +36,8 @@
 
         <li role="presentation" class="active">
           <a href="#section0">
-            <span class="nav__counter">World</span>
-            <p class="nav__body"><strong>Timeline-style navigation</strong>. Scroll down to see what happens, or click on a number in the nav.</p>
+            <span class="nav__counter">Global</span>
+            <p class="nav__body"></p>
           </a>
         </li>
 
@@ -91,7 +97,7 @@
     </section>
 
     <section class="section section0" id="section0">
-      <h1>World</h1>
+      <div id="distchart"></div>
     </section>
 
     <section class="section section1" id="section1">
@@ -131,7 +137,9 @@
   <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/dist.js"></script>
 
 
 </body>

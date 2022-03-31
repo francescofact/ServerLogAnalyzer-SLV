@@ -1,7 +1,8 @@
 var polygonSeries;
-var chart;
+var geodata;
 
 am5.ready(function() {
+    // -------------  MAIN GLOBE -----------
     var root = am5.Root.new("chartdiv");
     root.setThemes([
         am5themes_Animated.new(root)
@@ -53,22 +54,22 @@ am5.ready(function() {
     am5.net.load("world.json", chart).then(function (result) {
         let alldata = am5.JSONParser.parse(result.response);
         //countries
-        let geodata = alldata["countries"];
+        geodata = alldata["countries"];
         Object.entries(geodata).forEach(function(kv){
-            polygonSeries.getDataItemById(kv[0]).set("value", kv[1])
+            polygonSeries.getDataItemById(kv[0]).set("value", kv[1]["reqs"])
         });
-        let maxGlobe = geodata[Object.entries(geodata).reduce((a, b) => a[1] > b[1] ? a : b)[0]];
+        let maxGlobe = geodata[Object.entries(geodata).reduce((a, b) => a[1]["reqs"] > b[1]["reqs"] ? a : b)[0]];
         polygonSeries.set("heatRules", [{
             target: polygonSeries.mapPolygons.template,
             dataField: "value",
             min: am5.color(0xccf2de),
             max: am5.color(0x226d41),
-            maxValue: maxGlobe,
+            maxValue: maxGlobe["reqs"],
             key: "fill"
         }]);
         heatLegend.set("endValue", maxGlobe);
         
-        //citites
+        /*citites
         let cities = alldata["cities"];
         var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
         pointSeries.bullets.push(function () {
@@ -93,8 +94,8 @@ am5.ready(function() {
                 geometry: { type: "Point", coordinates: [city[1], city[0]] }
             });
         }
+        */
     });
-    
     polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}: {value}",
         toggleKey: "active",
@@ -135,36 +136,34 @@ am5.ready(function() {
     })
 
 
+    // Set up events
+    var previousPolygon;
 
-
-// Set up events
-var previousPolygon;
-
-polygonSeries.mapPolygons.template.on("active", function (active, target) {
-  if (previousPolygon && previousPolygon != target) {
-    previousPolygon.set("active", false);
-  }
-  if (target.get("active")) {
-    var centroid = target.geoCentroid();
-    if (centroid) {
-      chart.animate({ key: "rotationX", to: -centroid.longitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
-      chart.animate({ key: "rotationY", to: -centroid.latitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+    polygonSeries.mapPolygons.template.on("active", function (active, target) {
+    if (previousPolygon && previousPolygon != target) {
+        previousPolygon.set("active", false);
     }
-  }
+    if (target.get("active")) {
+        var centroid = target.geoCentroid();
+        if (centroid) {
+        chart.animate({ key: "rotationX", to: -centroid.longitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        chart.animate({ key: "rotationY", to: -centroid.latitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        }
+    }
 
-  previousPolygon = target;
-});
+    previousPolygon = target;
+    });
 
-chart.animate({
-    key: "rotationX",
-    from: 0,
-    to: 360,
-    duration: 30000,
-    loops: Infinity
-  });
+    chart.animate({
+        key: "rotationX",
+        from: 0,
+        to: 360,
+        duration: 30000,
+        loops: Infinity
+    });
 
-// Make stuff animate on load
-chart.appear(1000, 100);
+    // Make stuff animate on load
+    chart.appear(1000, 100);
 
 }); // end am5.ready()
 

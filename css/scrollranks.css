@@ -8,10 +8,7 @@
 
 section {
   height: 100vh;
-  font-size: 40px;
-  font-weight: 100;
   background-color: #22A7F0;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
