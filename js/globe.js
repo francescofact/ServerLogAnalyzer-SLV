@@ -69,6 +69,9 @@ am5.ready(function() {
         }]);
         heatLegend.set("endValue", maxGlobe);
         
+        //load other charts:
+        loadBarCountries(geodata);
+
         /*citites
         let cities = alldata["cities"];
         var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
