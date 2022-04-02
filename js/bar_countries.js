@@ -11,8 +11,8 @@ function loadBarCountries(countries){
     var chart = root.container.children.push(am5xy.XYChart.new(root, {
       panX: false,
       panY: false,
-      wheelX: "panX",
-      wheelY: "zoomX",
+      wheelX: "none",
+      wheelY: "none",
       layout: root.verticalLayout
     }));
     
@@ -22,7 +22,7 @@ function loadBarCountries(countries){
     
     var data = [];
     Object.entries(geodata).forEach(function(kv){
-        if (data.length < 10)
+        if (data.length < 12)
             data.push({
                 country: kv[0],
                 visits: kv[1]["reqs"],
@@ -64,17 +64,17 @@ function loadBarCountries(countries){
 
     // Add series
     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-    xAxis: xAxis,
-    yAxis: yAxis,
-    valueYField: "visits",
-    categoryXField: "country"
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "visits",
+        categoryXField: "country"
     }));
 
     series.columns.template.setAll({
-    tooltipText: "{categoryX}: {valueY}",
-    tooltipY: 0,
-    strokeOpacity: 0,
-    templateField: "columnSettings"
+        tooltipText: "{categoryX}: {valueY}",
+        tooltipY: 0,
+        strokeOpacity: 0,
+        templateField: "columnSettings"
     });
 
     series.data.setAll(data);

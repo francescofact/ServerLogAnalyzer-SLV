@@ -67,7 +67,7 @@ am5.ready(function() {
             maxValue: maxGlobe["reqs"],
             key: "fill"
         }]);
-        heatLegend.set("endValue", maxGlobe);
+        heatLegend.set("endValue", maxGlobe["reqs"]);
         
         //load other charts:
         loadBarCountries(geodata);

@@ -13,9 +13,12 @@
         height: 700px !important;
     }
 
+    .safepadding {
+      margin-left: 200px;
+    }
 
     #distchart, #barcountries{
-        width: 500px;
+        width: 100%;
         height: 500px;
     }
 
@@ -97,8 +100,16 @@
     </section>
 
     <section class="section section0" id="section0">
-      <div id="distchart"></div>
-      <div id="barcountries"></div>
+      <div class="row safepadding">
+        <div class="col-md-4 text-center">
+          <h2 align="center">Week Heatmap</h2>
+          <div id="distchart"></div>
+        </div>
+        <div class="col-md-8 text-center">
+          <h2 align="center">Requests Nationality</h2>
+          <div id="barcountries"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section1" id="section1">
