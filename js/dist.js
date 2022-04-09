@@ -9,7 +9,7 @@ am5.ready(function() {
     // Set themes
     // https://www.amcharts.com/docs/v5/concepts/themes/
     root.setThemes([
-      am5themes_Animated.new(root)
+      theme_color.new(root)
     ]);
     
     // Create chart
@@ -81,8 +81,8 @@ am5.ready(function() {
     // Add heat rule
     series.set("heatRules", [{
       target: series.columns.template,
-      min: am5.color(0xccf2de),
-      max: am5.color(0x226d41),
+      min: am5.color(0xabe0f8),
+      max: am5.color(0x0f5e9c),
       dataField: "value",
       key: "fill"
     }]);

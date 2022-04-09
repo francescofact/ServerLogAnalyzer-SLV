@@ -17,7 +17,7 @@
       margin-left: 200px;
     }
 
-    #distchart, #barcountries{
+    #distchart, #barcountries, #expiechart, #countrychart, #linechart{
         width: 100%;
         height: 500px;
     }
@@ -102,18 +102,33 @@
     <section class="section section0" id="section0">
       <div class="row safepadding">
         <div class="col-md-4 text-center">
-          <h2 align="center">Week Heatmap</h2>
+          <h2>Week Heatmap</h2>
           <div id="distchart"></div>
         </div>
         <div class="col-md-8 text-center">
-          <h2 align="center">Requests Nationality</h2>
+          <h2>Requests Nationality</h2>
           <div id="barcountries"></div>
+        </div>
+        <div class="col-md-8 text-center">
+          <h2>Device and OS</h2>
+          <div id="expiechart"></div>
         </div>
       </div>
     </section>
 
     <section class="section section1" id="section1">
-      Scroll down or use the nav.
+      <div class="row safepadding">
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart"></div>
+        </div>
+      </div>
+      <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section2" id="section2">
@@ -144,15 +159,38 @@
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
   <script  src="js/scrollranks.js"></script>
 
-  
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Kelly.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Material.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script>
+    var theme_color = am5themes_Kelly;
+    root.defaultTheme.rule("ColorSet").set("colors", [
+      am5.color(0x9b2226),
+      am5.color(0xae2012),
+      am5.color(0xbb3e03),
+      am5.color(0xca6702),
+      am5.color(0xee9b00),
+      am5.color(0xe9d8a6),
+      am5.color(0xcad2c5),
+      am5.color(0x84a98c),
+      am5.color(0x6b917e),
+      am5.color(0x507068),
+      am5.color(0x354f52),
+      am5.color(0x2f3e46),
+    ]);
+  </script>
+  <script src="js/utils.js"></script>
   <script src="js/globe.js"></script>
   <script src="js/dist.js"></script>
   <script src="js/bar_countries.js"></script>
+  <script src="js/exploding_pie.js"></script>
+  <script src="js/country.js"></script>
+  <script src="js/linechart.js"></script>
 
 
 </body>

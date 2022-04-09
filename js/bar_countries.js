@@ -3,7 +3,7 @@ function loadBarCountries(countries){
     // Create root element
     var root = am5.Root.new("barcountries");
     root.setThemes([
-      am5themes_Animated.new(root)
+        theme_color.new(root)
     ]);
     
     
@@ -21,7 +21,7 @@ function loadBarCountries(countries){
     var colors = chart.get("colors");
     
     var data = [];
-    Object.entries(geodata).forEach(function(kv){
+    Object.entries(countries).forEach(function(kv){
         if (data.length < 12)
             data.push({
                 country: kv[0],

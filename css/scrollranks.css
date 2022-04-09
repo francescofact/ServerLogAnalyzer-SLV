@@ -7,11 +7,15 @@
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #22A7F0;
   justify-content: center;
   align-items: center;
 }
+section{
+  background-color: #f2e9e4 !important;
+}
+
 section:nth-child(1) {
   background: white;
 }
