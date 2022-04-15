@@ -8,7 +8,7 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'>
   <link rel="stylesheet" href="css/scrollranks.css">
   <style>
-    #chartdiv{
+    #chartdiv, #barcountries{
         width: 100% !important;
         height: 700px !important;
     }
@@ -17,7 +17,7 @@
       margin-left: 200px;
     }
 
-    #distchart, #barcountries, #expiechart, .countrychart{
+    #distchart, #expiechart, .countrychart{
         width: 100%;
         height: 500px;
     }
@@ -110,14 +110,22 @@
     </nav>
 
     <section class="section section-1 " id="section-1">
-      <h1 align="center" style="color:#875692">ServerLogAnalyzer</h1><br><br>
-      <div id="chartdiv"></div>
+      <h1 align="center" style="color:#875692">ServerLogAnalyzer</h1>
+      <h3 align="center">Requests Nationality</h3><br>
+      <div class="row">
+        <div class="col-md-7">
+          <div id="chartdiv"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="barcountries"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section0" id="section0">
       <div class="row safepadding">
         <div class="col-md-12 text-center">
-          <h2>Requests</h2>
+          <h2>Requests Over Time</h2>
           <div id="linechart_global" class="linechart"></div>
         </div>
         <div class="col-md-4 text-center">

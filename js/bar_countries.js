@@ -31,9 +31,9 @@ function loadBarCountries(countries){
     });
 
     // Create axes
-    var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+    var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
         categoryField: "country",
-        renderer: am5xy.AxisRendererX.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, {
             minGridDistance: 30
         }),
         bullet: function (root, axis, dataItem) {
@@ -43,21 +43,21 @@ function loadBarCountries(countries){
                     width: 28,
                     height: 21,
                     centerY: am5.p50,
-                    centerX: am5.p50,
+                    centerX: am5.p100,
                     src: dataItem.dataContext.icon
                 })
             });
         }
     }));
 
-    xAxis.get("renderer").labels.template.setAll({
+    yAxis.get("renderer").labels.template.setAll({
         paddingTop: 20
     });
 
-    xAxis.data.setAll(data);
+    yAxis.data.setAll(data);
 
-    var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {})
+    var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererX.new(root, {})
     }));
 
 
@@ -65,12 +65,12 @@ function loadBarCountries(countries){
     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: "visits",
-        categoryXField: "country"
+        valueXField: "visits",
+        categoryYField: "country"
     }));
 
     series.columns.template.setAll({
-        tooltipText: "{categoryX}: {valueY}",
+        tooltipText: "{categoryY}: {valueX}",
         tooltipY: 0,
         strokeOpacity: 0,
         templateField: "columnSettings"
