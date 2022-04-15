@@ -31,8 +31,8 @@ am5.ready(function() {
     var heatLegend = chart.children.push(
         am5.HeatLegend.new(root, {
             orientation: "vertical",
-            startColor: am5.color(0xccf2de),
-            endColor: am5.color(0x226d41),
+            startColor: am5.color(0xbd9fbb),
+            endColor: am5.color(0x875692),
             startText: "Lowest",
             endText: "Highest",
             stepCount: 5
@@ -63,8 +63,8 @@ am5.ready(function() {
         polygonSeries.set("heatRules", [{
             target: polygonSeries.mapPolygons.template,
             dataField: "value",
-            min: am5.color(0xccf2de),
-            max: am5.color(0x226d41),
+            min: am5.color(0xbd9fbb),
+            max: am5.color(0x875692),
             maxValue: maxGlobe["reqs"],
             key: "fill"
         }]);
@@ -72,6 +72,7 @@ am5.ready(function() {
         
         //load other charts:
         loadBarCountries(geodata);
+        loadBestCountries();
     });
     polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}: {value}",

@@ -17,13 +17,27 @@
       margin-left: 200px;
     }
 
-    #distchart, #barcountries, #expiechart, #countrychart, #linechart{
+    #distchart, #barcountries, #expiechart, .countrychart{
         width: 100%;
         height: 500px;
     }
 
+    .linechart {
+        width: 100%;
+        height: 250px;
+    }
+
     .active .nav__desc{
       display:none;
+    }
+
+    .section {
+      border-style: solid none;
+      border-color: #875692;
+    }
+
+    body, .nav__counter, .nav__body, .cname_5 {
+      color: black !important;
     }
   </style>
 
@@ -32,10 +46,10 @@
 <!-- partial:index.partial.html -->
 <body data-spy="scroll" data-target="#navbar-example">
 
-  <div class="wrapper" >
+  <div class="wrapper" style="color:black !important">
 
     <nav class="nav__wrapper" id="navbar-example">
-      <ul class="nav"  style="display:block">
+      <ul class="nav"  style="display:none">
 
         <li role="presentation" class="active">
           <a href="#section0">
@@ -46,61 +60,66 @@
 
         <li role="presentation">
           <a href="#section1">
-            <span class="nav__counter">#1 <span class="nav__desc">USA</span></span>
-            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/us.png"/> USA</h3>
-            <p class="nav__body"><strong>1535</strong> unique visitors</p>
+            <span class="nav__counter">#1 <span class="nav__desc" id="cname_1"></span></span>
+            <h3 class="nav__title" id="cimg_1"></h3>
+            <p class="nav__body"><strong id="creqs_1"></strong> unique visitors</p>
           </a>
         </li>
 
         <li role="presentation">
           <a href="#section2">
-            <span class="nav__counter">#2 <span class="nav__desc">FR</span></span>
-            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/fr.png"/> France</h3>
-            <p class="nav__body"><strong>1277</strong> unique visitors</p>
+            <span class="nav__counter">#2 <span class="nav__desc" id="cname_2"></span></span>
+            <h3 class="nav__title" id="cimg_2"></h3>
+            <p class="nav__body"><strong id="creqs_2"></strong> unique visitors</p>
           </a>
         </li>
 
         <li role="presentation">
           <a href="#section3">
-            <span class="nav__counter">#3 <span class="nav__desc">CN</span></span>
-            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/cn.png"/> China</h3>
-            <p class="nav__body"><strong>662</strong> unique visitors</p>
+            <span class="nav__counter">#3 <span class="nav__desc" id="cname_3"></span></span>
+            <h3 class="nav__title" id="cimg_3"></h3>
+            <p class="nav__body"><strong id="creqs_3"></strong> unique visitors</p>
           </a>
         </li>
         
         <li role="presentation">
           <a href="#section4">
-            <span class="nav__counter">#4 <span class="nav__desc">GB</span></span>
-            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/cn.png"/> Great Britan</h3>
-            <p class="nav__body"><strong>662</strong> unique visitors</p>
+            <span class="nav__counter">#4 <span class="nav__desc" id="cname_4"></span></span>
+            <h3 class="nav__title" id="cimg_4"></h3>
+            <p class="nav__body"><strong id="creqs_4"></strong> unique visitors</p>
           </a>
         </li>
         
         <li role="presentation">
           <a href="#section5">
-            <span class="nav__counter">#5 <span class="nav__desc">CN</span></span>
-            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/cn.png"/> China</h3>
-            <p class="nav__body"><strong>662</strong> unique visitors</p>
+            <span class="nav__counter">#5 <span class="nav__desc" id="cname_5"></span></span>
+            <h3 class="nav__title" id="cimg_5"></h3>
+            <p class="nav__body"><strong id="creqs_5"></strong> unique visitors</p>
           </a>
         </li>
         
         <li role="presentation">
           <a href="#section6">
-            <span class="nav__counter">#6 <span class="nav__desc">CN</span></span>
-            <h3 class="nav__title"><img src="https://flagcdn.com/36x27/cn.png"/> China</h3>
-            <p class="nav__body"><strong>662</strong> unique visitors</p>
+            <span class="nav__counter">#6 <span class="nav__desc" id="cname_6"></span></span>
+            <h3 class="nav__title" id="cimg_6"></h3>
+            <p class="nav__body"><strong id="creqs_6"></strong> unique visitors</p>
           </a>
         </li>
 
       </ul>
     </nav>
 
-    <section class="section section-1 justify-content-center" id="section-1" style="display:flex">
+    <section class="section section-1 " id="section-1">
+      <h1 align="center" style="color:#875692">ServerLogAnalyzer</h1><br><br>
       <div id="chartdiv"></div>
     </section>
 
     <section class="section section0" id="section0">
       <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart_global" class="linechart"></div>
+        </div>
         <div class="col-md-4 text-center">
           <h2>Week Heatmap</h2>
           <div id="distchart"></div>
@@ -109,7 +128,7 @@
           <h2>Requests Nationality</h2>
           <div id="barcountries"></div>
         </div>
-        <div class="col-md-8 text-center">
+        <div class="col-md-12 text-center">
           <h2>Device and OS</h2>
           <div id="expiechart"></div>
         </div>
@@ -118,37 +137,80 @@
 
     <section class="section section1" id="section1">
       <div class="row safepadding">
-        <div class="col-md-6 text-center">
-          <h2>Cities</h2>
-          <div id="countrychart"></div>
-        </div>
-      </div>
-      <div class="row safepadding">
         <div class="col-md-12 text-center">
           <h2>Requests</h2>
-          <div id="linechart"></div>
+          <div id="linechart_1" class="linechart"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart_1" class="countrychart"></div>
         </div>
       </div>
     </section>
 
     <section class="section section2" id="section2">
-      Section 2
+      <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart_2" class="linechart"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart_2" class="countrychart"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section3" id="section3">
-      Section 3
+      <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart_3" class="linechart"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart_3" class="countrychart"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section4" id="section4">
-      Section 4
+      <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart_4" class="linechart"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart_4" class="countrychart"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section5" id="section5">
-      Section 5
+      <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart_5" class="linechart"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart_5" class="countrychart"></div>
+        </div>
+      </div>
     </section>
 
     <section class="section section6" id="section6">
-      Section 6
+      <div class="row safepadding">
+        <div class="col-md-12 text-center">
+          <h2>Requests</h2>
+          <div id="linechart_6" class="linechart"></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <h2>Cities</h2>
+          <div id="countrychart_6" class="countrychart"></div>
+        </div>
+      </div>
     </section>
 
 
@@ -169,20 +231,6 @@
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script>
     var theme_color = am5themes_Kelly;
-    root.defaultTheme.rule("ColorSet").set("colors", [
-      am5.color(0x9b2226),
-      am5.color(0xae2012),
-      am5.color(0xbb3e03),
-      am5.color(0xca6702),
-      am5.color(0xee9b00),
-      am5.color(0xe9d8a6),
-      am5.color(0xcad2c5),
-      am5.color(0x84a98c),
-      am5.color(0x6b917e),
-      am5.color(0x507068),
-      am5.color(0x354f52),
-      am5.color(0x2f3e46),
-    ]);
   </script>
   <script src="js/utils.js"></script>
   <script src="js/globe.js"></script>

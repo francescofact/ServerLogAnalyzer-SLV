@@ -13,10 +13,9 @@ function loadBarCountries(countries){
       panY: false,
       wheelX: "none",
       wheelY: "none",
-      layout: root.verticalLayout
+      //layout: root.verticalLayout
     }));
-    
-    
+
     // Data
     var colors = chart.get("colors");
     
@@ -39,14 +38,14 @@ function loadBarCountries(countries){
         }),
         bullet: function (root, axis, dataItem) {
             return am5xy.AxisBullet.new(root, {
-            location: 0.5,
-            sprite: am5.Picture.new(root, {
-                width: 28,
-                height: 21,
-                centerY: am5.p50,
-                centerX: am5.p50,
-                src: dataItem.dataContext.icon
-            })
+                location: 0.5,
+                sprite: am5.Picture.new(root, {
+                    width: 28,
+                    height: 21,
+                    centerY: am5.p50,
+                    centerX: am5.p50,
+                    src: dataItem.dataContext.icon
+                })
             });
         }
     }));

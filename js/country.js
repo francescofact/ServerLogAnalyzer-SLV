@@ -1,7 +1,6 @@
-function loadCountry(country){
-    //TODO: specify div id by param
+function loadCountry(country, div){
     //create map
-    var root = am5.Root.new("countrychart");
+    var root = am5.Root.new("countrychart_"+div);
     root.setThemes([
         theme_color.new(root)
       ]);
@@ -12,7 +11,8 @@ function loadCountry(country){
     var polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
             geoJSON: am5geodata_worldLow,
-            include: [country]
+            include: [country],
+            fill: "#f3c300"
         })
     );
     
@@ -24,9 +24,9 @@ function loadCountry(country){
         
         container.children.push(
             am5.Circle.new(root, {
-            radius: 2,
-            fill: "#db2d21",
-            strokeOpacity: 0
+                radius: 2,
+                fill: "#db2d21",
+                strokeOpacity: 0
             })
         );
         

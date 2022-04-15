@@ -2,7 +2,7 @@
   min-height: 100vh;
   font-family: "Roboto Slab", serif;
   font-weight: 300;
-  color: #fff;
+  color: #000000;
   position: relative;
 }
 
@@ -81,8 +81,8 @@ section:nth-child(7) {
 .nav li:after {
   content: "";
   display: block;
-  border-left: 2px solid white;
-  border-top: 2px solid white;
+  border-left: 2px solid #794d83;
+  border-top: 2px solid #794d83;
   height: 250px;
   width: 20px;
   position: absolute;

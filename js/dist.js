@@ -81,8 +81,8 @@ am5.ready(function() {
     // Add heat rule
     series.set("heatRules", [{
       target: series.columns.template,
-      min: am5.color(0xabe0f8),
-      max: am5.color(0x0f5e9c),
+      min: am5.color(0xf3c300),
+      max: am5.color(0xbe0032),
       dataField: "value",
       key: "fill"
     }]);
