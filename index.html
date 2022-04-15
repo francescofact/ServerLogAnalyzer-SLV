@@ -7,6 +7,7 @@
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'>
   <link rel="stylesheet" href="css/scrollranks.css">
+  <link rel="stylesheet" href="css/modal.css">
   <style>
     #chartdiv, #barcountries{
         width: 100% !important;
@@ -17,7 +18,7 @@
       margin-left: 200px;
     }
 
-    #distchart, #expiechart, .countrychart{
+    #expiechart, .mychart{
         width: 100%;
         height: 500px;
     }
@@ -130,15 +131,16 @@
         </div>
         <div class="col-md-4 text-center">
           <h2>Week Heatmap</h2>
-          <div id="distchart"></div>
+          <div id="distchart_global" class="mychart"></div>
         </div>
         <div class="col-md-8 text-center">
           <h2>Requests Nationality</h2>
-          <div id="barcountries"></div>
+          
         </div>
         <div class="col-md-12 text-center">
-          <h2>Device and OS</h2>
+          <h2>Devices, OSs and Browsers</h2>
           <div id="expiechart"></div>
+          <p>Select one device to get OSs and Browsers insights</p>
         </div>
       </div>
     </section>
@@ -151,7 +153,7 @@
         </div>
         <div class="col-md-6 text-center">
           <h2>Cities</h2>
-          <div id="countrychart_1" class="countrychart"></div>
+          <div id="countrychart_1" class="mychart"></div>
         </div>
       </div>
     </section>
@@ -164,7 +166,7 @@
         </div>
         <div class="col-md-6 text-center">
           <h2>Cities</h2>
-          <div id="countrychart_2" class="countrychart"></div>
+          <div id="countrychart_2" class="mychart"></div>
         </div>
       </div>
     </section>
@@ -177,7 +179,7 @@
         </div>
         <div class="col-md-6 text-center">
           <h2>Cities</h2>
-          <div id="countrychart_3" class="countrychart"></div>
+          <div id="countrychart_3" class="mychart"></div>
         </div>
       </div>
     </section>
@@ -190,7 +192,7 @@
         </div>
         <div class="col-md-6 text-center">
           <h2>Cities</h2>
-          <div id="countrychart_4" class="countrychart"></div>
+          <div id="countrychart_4" class="mychart"></div>
         </div>
       </div>
     </section>
@@ -203,7 +205,7 @@
         </div>
         <div class="col-md-6 text-center">
           <h2>Cities</h2>
-          <div id="countrychart_5" class="countrychart"></div>
+          <div id="countrychart_5" class="mychart"></div>
         </div>
       </div>
     </section>
@@ -216,12 +218,57 @@
         </div>
         <div class="col-md-6 text-center">
           <h2>Cities</h2>
-          <div id="countrychart_6" class="countrychart"></div>
+          <div id="countrychart_6" class="mychart"></div>
         </div>
       </div>
     </section>
 
 
+  </div>
+
+
+  <div id="fsModal" class="modal animated fade-scale" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 id="myModalLabel" class="modal-title">
+            Country Insights
+            <span style="float:right"><btn class="btn btn-light" id="closeModal">Close</btn></span>
+          </h1>
+        </div>
+        <div class="modal-body">
+          <section class="section section0" id="section0">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h2>Requests Over Time</h2>
+                <div id="linechart_modal" class="linechart"></div>
+              </div>
+              <div class="col-md-4 text-center">
+                <h2>Week Heatmap</h2>
+                <div id="distchart_modal" class="mychart"></div>
+              </div>
+              <div class="col-md-8 text-center">
+                <h2>Requests Location</h2>
+                <div id="countrychart_modal" class="mychart"></div>
+              </div>
+              <div class="col-md-12 text-center">
+                <h2>Devices, OSs and Browsers</h2>
+                <div id="expiechart_modal"></div>
+                <p>Select one device to get OSs and Browsers insights</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading">
+    <img src="servers.png"/>
+    <h1 align="center">
+      <img src="servers.png"/><br>
+      ServerLogAnalyzer
+    </h1>
   </div>
 </body>
   <!-- partial -->

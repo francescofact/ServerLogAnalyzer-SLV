@@ -1,12 +1,25 @@
+var modalCO = null;
 function loadCountry(country, div){
     //create map
-    var root = am5.Root.new("countrychart_"+div);
-    root.setThemes([
-        theme_color.new(root)
-      ]);
+    if (div == "modal" && modalCO != null)
+        modalCO.dispose();
+        
+        var root = am5.Root.new("countrychart_"+div);
+        root.setThemes([
+          theme_color.new(root)
+        ]);
+        if (div == "modal"){
+            modalCO = root;
+        }
+    
     
     var chart = root.container.children.push(
-        am5map.MapChart.new(root, {})
+        am5map.MapChart.new(root, {
+            panX: "rotateX",
+            panY: "rotateY",
+            wheelX: "none",
+            wheelY: "none",
+        })
     );
     var polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {

@@ -1,20 +1,27 @@
 var requests = [];
+var modalLC= null;
 function loadLineChart(country, alldata){
     am5.ready(function() {
         // Create root element
+        if (country == "modal" && modalLC != null)
+          modalLC.dispose();
+        
         var root = am5.Root.new("linechart_"+country);
         root.setThemes([
           theme_color.new(root)
         ]);
+        if (country == "modal"){
+          modalLC = root;
+        }
         
         
         // Create chart
         // https://www.amcharts.com/docs/v5/charts/xy-chart/
         var chart = root.container.children.push(am5xy.XYChart.new(root, {
-          panX: true,
-          panY: true,
-          wheelX: "panX",
-          wheelY: "zoomX",
+          panX: "rotateX",
+          panY: "rotateY",
+          wheelX: "none",
+          wheelY: "none",
           pinchZoomX:true
         }));
         

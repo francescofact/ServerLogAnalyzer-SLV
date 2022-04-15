@@ -72,7 +72,11 @@ am5.ready(function() {
         
         //load other charts:
         loadBarCountries(geodata);
+        loadDistChart("global");
         loadBestCountries();
+        setTimeout(function(){
+            $(".loading").fadeOut();
+        }, 500)
     });
     polygonSeries.mapPolygons.template.setAll({
         tooltipText: "{name}: {value}",
@@ -103,6 +107,13 @@ am5.ready(function() {
 
     polygonSeries.mapPolygons.template.events.on("click", function(ev) {
         let country = ev.target.dataItem.get("id");
+        
+        loadLineChart("modal", requests[country]);
+        loadDistChart(country);
+        loadCountry(country, "modal");
+        setTimeout(function () {
+            $("#fsModal").modal("show");
+        }, 1000);
     });
 
     polygonSeries.mapPolygons.template.events.on("pointerover", function(ev) {

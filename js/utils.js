@@ -24,3 +24,8 @@ function loadBestCountries(){
         loadCountry(kv[0], index)
     });
 }
+
+$("#closeModal").click(function(){
+    //close modal and unload charts
+    $("#fsModal").modal("hide");
+})

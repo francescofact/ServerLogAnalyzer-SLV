@@ -94,7 +94,7 @@ am5.ready(function() {
     var selectedSlice;
 
     // Set data
-    am5.net.load("devices.json", distchart).then(function (result) {
+    am5.net.load("devices.json", container).then(function (result) {
         let devices = am5.JSONParser.parse(result.response);
         series.data.setAll(devices);
     });
@@ -117,7 +117,6 @@ am5.ready(function() {
             subSeries2.data.clear()
             let totals = sumObjsChildren(dataContext.browser, "value");
             dataContext.browser.forEach(function(browser){
-                console.log([browser.value, totals])
                 if ((browser.value)*100/totals >  1)
                     subSeries2.data.push(browser)
             })

@@ -13,7 +13,7 @@ function loadBarCountries(countries){
       panY: false,
       wheelX: "none",
       wheelY: "none",
-      //layout: root.verticalLayout
+      layout: root.horizontalLayout
     }));
 
     // Data
@@ -26,7 +26,7 @@ function loadBarCountries(countries){
                 country: kv[0],
                 visits: kv[1]["reqs"],
                 icon: "https://flagcdn.com/28x21/"+kv[0].toLowerCase()+".png",
-                columnSettings: { fill: colors.next() }
+                columnSettings: { fill: "#f3c300" }
             });
     });
 
@@ -36,6 +36,7 @@ function loadBarCountries(countries){
         renderer: am5xy.AxisRendererY.new(root, {
             minGridDistance: 30
         }),
+        labels: "",
         bullet: function (root, axis, dataItem) {
             return am5xy.AxisBullet.new(root, {
                 location: 0.5,
