@@ -137,6 +137,10 @@ function loadPies(country){
                 duration: 1000,
                 easing: am5.ease.out(am5.ease.cubic)
             });
+
+
+            subSeries.labels.each(hideSmall, 1);
+            subSeries2.labels.each(hideSmall, 1);
         }
 
         function sumObjsChildren(list, key){
@@ -154,19 +158,22 @@ function loadPies(country){
         });
         
         setTimeout(function(){
-            series.labels.each(hideSmall);
-            subSeries.labels.each(hideSmall);
-            subSeries2.labels.each(hideSmall);
+            series.labels.each(hideSmall, 5);
+            subSeries.labels.each(hideSmall, 1);
+            subSeries2.labels.each(hideSmall, 1);
         }, 100)
     }); // end am5.ready()
     
 }
 
-function hideSmall(ev) {
+function hideSmall(ev, min) {
     let text = ev.getText();
+    console.log(text);
     if (text.includes(" ") && text.includes(".")){
-        text = text.split(" ")[1].split(".")[0]
-        if (parseInt(text)<5)
+        text = text.split(" ")
+        text = text[text.length -1].split(".")[0]
+        console.log(text);
+        if (parseInt(text)<min)
             ev.hide();
     }
 }
