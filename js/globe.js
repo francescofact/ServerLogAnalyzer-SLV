@@ -96,9 +96,9 @@ function loadGlobe(){
             loadLineChart("modal", requests[country]);
             loadDistChart(country);
             loadCountry(country, "modal");
-            loadPies(country)
             setTimeout(function () {
                 $("#fsModal").modal("show");
+                loadPies(country)
             }, 1000);
         });
 

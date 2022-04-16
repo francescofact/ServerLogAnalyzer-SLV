@@ -1,4 +1,5 @@
 var modalPI = null;
+var debug;
 function loadPies(country){
     am5.ready(function() {
 
@@ -15,9 +16,9 @@ function loadPies(country){
         
         var container = root.container.children.push(
             am5.Container.new(root, {
-            width: am5.p100,
-            height: am5.p100,
-            layout: root.horizontalLayout
+                width: am5.p100,
+                height: am5.p100,
+                layout: root.horizontalLayout
             })
         );
         
@@ -39,6 +40,7 @@ function loadPies(country){
             })
         );
         
+        
         series.labels.template.setAll({
             textType: "circular",
             radius: 4
@@ -46,6 +48,7 @@ function loadPies(country){
         series.ticks.template.set("visible", false);
         series.slices.template.set("toggleKey", "none");
         
+
         // add events
         series.slices.template.events.on("click", function(e) {
             selectSlice(e.target);
@@ -65,7 +68,8 @@ function loadPies(country){
         var subSeries = subChart.series.push(
             am5percent.PieSeries.new(root, {
                 valueField: "value",
-                categoryField: "os"
+                categoryField: "os",
+                alignLabels: false
             })
         );
         
@@ -149,6 +153,20 @@ function loadPies(country){
             selectSlice(series.slices.getIndex(0));
         });
         
+        setTimeout(function(){
+            series.labels.each(hideSmall);
+            subSeries.labels.each(hideSmall);
+            subSeries2.labels.each(hideSmall);
+        }, 100)
     }); // end am5.ready()
-  
+    
+}
+
+function hideSmall(ev) {
+    let text = ev.getText();
+    if (text.includes(" ") && text.includes(".")){
+        text = text.split(" ")[1].split(".")[0]
+        if (parseInt(text)<5)
+            ev.hide();
+    }
 }
