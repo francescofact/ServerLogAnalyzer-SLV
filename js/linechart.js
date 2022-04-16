@@ -1,4 +1,3 @@
-var requests = [];
 var modalLC= null;
 function loadLineChart(country, alldata){
     am5.ready(function() {
@@ -93,14 +92,3 @@ function loadLineChart(country, alldata){
         
     }); // end am5.ready()
 }
-
-$.ajax({
-  url: "requests.json",
-  success: function(e){
-    requests = e;
-    loadLineChart("global", e["global"])
-    /*Object.entries(e).forEach(function(kv){
-      loadLineChart(kv[0], kv[1])
-    });*/
-  }
-})

@@ -1,3 +1,38 @@
+//retive data
+var world;
+var dists;
+var requests;
+var devices;
+
+am5.net.load("world.json").then(function (result) {
+    let alldata = am5.JSONParser.parse(result.response);
+    //countries
+    let geodata = alldata["countries"];
+    world = geodata;
+    loadGlobe();
+    loadBarCountries(world);
+    am5.net.load("requests.json").then(function (result) {
+        requests = am5.JSONParser.parse(result.response);
+        loadLineChart("global", requests["global"])
+        loadBestCountries();
+        setTimeout(function(){
+            $(".loading").fadeOut();
+        }, 500)
+    })
+    
+})
+
+am5.net.load("dist.json").then(function (result) {
+    dists = am5.JSONParser.parse(result.response);
+    loadDistChart("global")
+});
+
+am5.net.load("devices.json").then(function (result) {
+    devices = am5.JSONParser.parse(result.response);
+    loadPies("global");
+    
+});
+
 function stringToDate(_date,_format,_delimiter){
             var formatLowerCase=_format.toLowerCase();
             var formatItems=formatLowerCase.split(_delimiter);
