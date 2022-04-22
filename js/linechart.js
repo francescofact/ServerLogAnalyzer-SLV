@@ -83,8 +83,8 @@ function loadLineChart(country, alldata){
           series.appear(1000);
         }
         
-        createSeries("Bot", "bots");
-        createSeries("User", "requests");
+        createSeries("Bot Requests", "bots");
+        createSeries("User Requests", "requests");
         
         // Make stuff animate on load
         // https://www.amcharts.com/docs/v5/concepts/animations/

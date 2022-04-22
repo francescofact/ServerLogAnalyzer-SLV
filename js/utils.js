@@ -32,7 +32,6 @@ am5.net.load("dist.json").then(function (result) {
 am5.net.load("devices.json").then(function (result) {
     devices = am5.JSONParser.parse(result.response);
     loadPies("global");
-    
 });
 
 am5.net.load("status.json").then(function (result) {
@@ -45,8 +44,26 @@ $("#closeModal").click(function(){
     $("#fsModal").modal("hide");
 })
 
+$(".seemore").click(function(){
+    let btn = $(this);
+    btn.html("Loading...").attr("disabled", true)
+    showCountryInsights(btn.data("country"), btn)
+})
+
 
 //UTILITY FUNCTIONS
+function showCountryInsights(country, btn){
+    loadLineChart("modal", requests[country]);
+    loadDistChart(country);
+    loadCountry(country, "modal");
+    setTimeout(function () {
+        $("#fsModal").modal("show");
+        loadPies(country)
+        if (btn != undefined)
+            btn.html("See more analytics").attr("disabled", false)
+    }, 1000);
+}
+
 function stringToDate(_date,_format,_delimiter){
             var formatLowerCase=_format.toLowerCase();
             var formatItems=formatLowerCase.split(_delimiter);
@@ -69,8 +86,10 @@ function loadBestCountries(){
         $("#cname_"+index).html('<img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png"/> ');
         $("#cimg_"+index).html('<img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png"/> '+ kv[0]);
         $("#creqs_"+index).text(kv[1]["reqs"]);
+        $("#section"+index+" .seemore").data("country", kv[0])
         loadLineChart(index, requests[kv[0]])
-        loadCountry(kv[0], index)
+        //loadCountry(kv[0], index)
+        loadPies(kv[0], index)
     });
 }
 

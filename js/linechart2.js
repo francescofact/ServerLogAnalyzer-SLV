@@ -41,7 +41,6 @@ function loadLineChart2(country, alldata){
                 "users": kv[1]["users"],
                 "newusers": kv[1]["newusers"],
             });
-            console.log([stringToDate(kv[0], "dd/MM/yyyy", "/"), kv[1]["users"], kv[1]["newusers"]])
         });
     
         // Create axes

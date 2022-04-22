@@ -1,3 +1,4 @@
+var debug;
 function loadBarCountries(countries){
 
     // Create root element
@@ -5,7 +6,6 @@ function loadBarCountries(countries){
     root.setThemes([
         theme_color.new(root)
     ]);
-    
     
     // Create chart
     var chart = root.container.children.push(am5xy.XYChart.new(root, {
@@ -17,8 +17,6 @@ function loadBarCountries(countries){
     }));
 
     // Data
-    var colors = chart.get("colors");
-    
     var data = [];
     Object.entries(countries).forEach(function(kv){
         if (data.length < 12)
@@ -51,9 +49,6 @@ function loadBarCountries(countries){
         }
     }));
 
-    yAxis.get("renderer").labels.template.setAll({
-        paddingTop: 20
-    });
 
     yAxis.data.setAll(data);
 
@@ -78,7 +73,7 @@ function loadBarCountries(countries){
     });
 
     series.data.setAll(data);
-
+    debug = series;
 
     // Make stuff animate on load
     series.appear();

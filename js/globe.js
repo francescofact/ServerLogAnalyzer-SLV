@@ -92,14 +92,7 @@ function loadGlobe(){
 
         polygonSeries.mapPolygons.template.events.on("click", function(ev) {
             let country = ev.target.dataItem.get("id");
-            
-            loadLineChart("modal", requests[country]);
-            loadDistChart(country);
-            loadCountry(country, "modal");
-            setTimeout(function () {
-                $("#fsModal").modal("show");
-                loadPies(country)
-            }, 1000);
+            showCountryInsights(country);
         });
 
         polygonSeries.mapPolygons.template.events.on("pointerover", function(ev) {
