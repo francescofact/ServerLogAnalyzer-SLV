@@ -3,6 +3,7 @@ var world;
 var dists;
 var requests;
 var devices;
+var statuses;
 
 am5.net.load("world.json").then(function (result) {
     let alldata = am5.JSONParser.parse(result.response);
@@ -14,6 +15,7 @@ am5.net.load("world.json").then(function (result) {
     am5.net.load("requests.json").then(function (result) {
         requests = am5.JSONParser.parse(result.response);
         loadLineChart("global", requests["global"])
+        loadLineChart2("global", requests["global"])
         loadBestCountries();
         setTimeout(function(){
             $(".loading").fadeOut();
@@ -33,6 +35,18 @@ am5.net.load("devices.json").then(function (result) {
     
 });
 
+am5.net.load("status.json").then(function (result) {
+    statuses = am5.JSONParser.parse(result.response);
+    loadStatusPie("global");
+});
+
+//EVENT HANDLERS
+$("#closeModal").click(function(){
+    $("#fsModal").modal("hide");
+})
+
+
+//UTILITY FUNCTIONS
 function stringToDate(_date,_format,_delimiter){
             var formatLowerCase=_format.toLowerCase();
             var formatItems=formatLowerCase.split(_delimiter);
@@ -60,7 +74,17 @@ function loadBestCountries(){
     });
 }
 
-$("#closeModal").click(function(){
-    //close modal and unload charts
-    $("#fsModal").modal("hide");
-})
+function hideSmall(series, min){
+    for (let i=0; i<series.labels.values.length; i++){
+        let ev = series.labels.values[i];
+        let text = ev.getText();
+        if (text.includes(" ") && text.includes(".")){
+            text = text.split(" ")
+            text = text[text.length -1].split(".")[0]
+            if (parseInt(text)<min){
+                ev.hide();
+                series.ticks.values[i].hide();
+            }
+        }
+    }
+}

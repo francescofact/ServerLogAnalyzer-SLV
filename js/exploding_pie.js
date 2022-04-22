@@ -1,5 +1,4 @@
 var modalPI = null;
-var debug;
 function loadPies(country){
     am5.ready(function() {
 
@@ -99,29 +98,28 @@ function loadPies(country){
 
         // Set data
         series.data.setAll(devices[country]);
-        
         function selectSlice(slice) {
             selectedSlice = slice;
             var dataItem = slice.dataItem;
             var dataContext = dataItem.dataContext;
         
-            if(dataContext["device"] == "Bot")
+            if(dataContext["device"] == "Bot"){
+                alert("No insights for Bots")
                 return;
+            }
             
             if (dataContext) {
                 subSeries.data.clear()
-                dataContext.os.forEach(function(os){
-                    subSeries.data.push(os)
-                })
+                subSeries.data.setAll(dataContext.os)
+                setTimeout(function(){
+                    hideSmall(subSeries, 1);
+                }, 1)
 
                 subSeries2.data.clear()
-                let totals = sumObjsChildren(dataContext.browser, "value");
-                dataContext.browser.forEach(function(browser){
-                    if ((browser.value)*100/totals >  1)
-                        subSeries2.data.push(browser)
-                })
+                subSeries2.data.setAll(dataContext.browser)
+                subSeries2.labels.clear();
+                subSeries2.ticks.clear();
             }
-        
             var middleAngle = slice.get("startAngle") + slice.get("arc") / 2;
             var firstAngle = series.dataItems[0].get("slice").get("startAngle");
         
@@ -138,9 +136,6 @@ function loadPies(country){
                 easing: am5.ease.out(am5.ease.cubic)
             });
 
-
-            subSeries.labels.each(hideSmall, 1);
-            subSeries2.labels.each(hideSmall, 1);
         }
 
         function sumObjsChildren(list, key){
@@ -153,27 +148,11 @@ function loadPies(country){
         
         container.appear(1000, 10);
         
-        series.events.on("datavalidated", function() {
-            selectSlice(series.slices.getIndex(0));
-        });
-        
         setTimeout(function(){
-            series.labels.each(hideSmall, 5);
-            subSeries.labels.each(hideSmall, 1);
-            subSeries2.labels.each(hideSmall, 1);
+            hideSmall(series, 5);
+            hideSmall(subSeries, 1);
+            hideSmall(subSeries2, 1);
         }, 100)
     }); // end am5.ready()
     
-}
-
-function hideSmall(ev, min) {
-    let text = ev.getText();
-    console.log(text);
-    if (text.includes(" ") && text.includes(".")){
-        text = text.split(" ")
-        text = text[text.length -1].split(".")[0]
-        console.log(text);
-        if (parseInt(text)<min)
-            ev.hide();
-    }
 }

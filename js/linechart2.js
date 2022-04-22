@@ -1,16 +1,16 @@
-var modalLC= null;
-function loadLineChart(country, alldata){
+var modalLC2= null;
+function loadLineChart2(country, alldata){
     am5.ready(function() {
         // Create root element
-        if (country == "modal" && modalLC != null)
-          modalLC.dispose();
+        if (country == "modal" && modalLC2 != null)
+          modalLC2.dispose();
         
-        var root = am5.Root.new("linechart_"+country);
+        var root = am5.Root.new("linechart2_"+country);
         root.setThemes([
           theme_color.new(root)
         ]);
         if (country == "modal"){
-          modalLC = root;
+          modalLC2 = root;
         }
         
         
@@ -38,9 +38,10 @@ function loadLineChart(country, alldata){
             data.push({
                 "date": stringToDate(kv[0], "dd/MM/yyyy", "/"),
                 "url": kv[1]["url"],
-                "requests": kv[1]["reqs"] - kv[1]["bot"],
-                "bots": kv[1]["bot"],
+                "users": kv[1]["users"],
+                "newusers": kv[1]["newusers"],
             });
+            console.log([stringToDate(kv[0], "dd/MM/yyyy", "/"), kv[1]["users"], kv[1]["newusers"]])
         });
     
         // Create axes
@@ -83,8 +84,8 @@ function loadLineChart(country, alldata){
           series.appear(1000);
         }
         
-        createSeries("Bot", "bots");
-        createSeries("User", "requests");
+        createSeries("New Users", "newusers");
+        createSeries("Old Users", "users");
         
         // Make stuff animate on load
         // https://www.amcharts.com/docs/v5/concepts/animations/

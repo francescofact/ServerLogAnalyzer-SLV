@@ -98,14 +98,6 @@
             <p class="nav__body"><strong id="creqs_5"></strong> unique visitors</p>
           </a>
         </li>
-        
-        <li role="presentation">
-          <a href="#section6">
-            <span class="nav__counter">#6 <span class="nav__desc" id="cname_6"></span></span>
-            <h3 class="nav__title" id="cimg_6"></h3>
-            <p class="nav__body"><strong id="creqs_6"></strong> unique visitors</p>
-          </a>
-        </li>
 
       </ul>
     </nav>
@@ -129,18 +121,22 @@
           <h2>Requests Over Time</h2>
           <div id="linechart_global" class="linechart"></div>
         </div>
+        <div class="col-md-12 text-center">
+          <h2>New Users Over Time</h2>
+          <div id="linechart2_global" class="linechart"></div>
+        </div>
         <div class="col-md-4 text-center">
           <h2>Week Heatmap</h2>
           <div id="distchart_global" class="mychart"></div>
         </div>
         <div class="col-md-8 text-center">
-          <h2>Requests Nationality</h2>
-          
+          <h2>Requests HTTP Status</h2>
+          <div id="statuschart_global" class="mychart"></div>
         </div>
         <div class="col-md-12 text-center">
           <h2>Devices, OSs and Browsers</h2>
-          <div id="expiechart_global" class="mychart"></div>
           <p>Select one device to get OSs and Browsers insights</p>
+          <div id="expiechart_global" class="mychart"></div>
         </div>
       </div>
     </section>
@@ -209,21 +205,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section section6" id="section6">
-      <div class="row safepadding">
-        <div class="col-md-12 text-center">
-          <h2>Requests</h2>
-          <div id="linechart_6" class="linechart"></div>
-        </div>
-        <div class="col-md-6 text-center">
-          <h2>Cities</h2>
-          <div id="countrychart_6" class="mychart"></div>
-        </div>
-      </div>
-    </section>
-
-
   </div>
 
 
@@ -252,10 +233,10 @@
                 <div id="countrychart_modal" class="mychart"></div>
               </div>
               <div class="col-md-12 text-center">
+                <p>Select one device to get OSs and Browsers insights</p>
                 <h2>Devices, OSs and Browsers</h2>
                 <div id="expiechart_modal" class="mychart"></div>
-                <p>Select one device to get OSs and Browsers insights</p>
-              </div>
+                </div>
             </div>
           </section>
         </div>
@@ -291,9 +272,11 @@
   <script src="js/globe.js"></script>
   <script src="js/dist.js"></script>
   <script src="js/bar_countries.js"></script>
+  <script src="js/status_pie.js"></script>
   <script src="js/exploding_pie.js"></script>
   <script src="js/country.js"></script>
   <script src="js/linechart.js"></script>
+  <script src="js/linechart2.js"></script>
 
 
 </body>
