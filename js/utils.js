@@ -85,7 +85,8 @@ function loadBestCountries(){
         index += 1;
         $("#cname_"+index).html('<img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png"/> ');
         $("#cimg_"+index).html('<img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png"/> '+ kv[0]);
-        $("#creqs_"+index).text(kv[1]["reqs"]);
+        $("#creqs_"+index).text(kv[1]["unique"]);
+        $("#totreqs_"+index).text(kv[1]["reqs"]);
         $("#section"+index+" .seemore").data("country", kv[0])
         loadLineChart(index, requests[kv[0]])
         //loadCountry(kv[0], index)

@@ -30,11 +30,11 @@ function loadGlobe(){
         var heatLegend = chart.children.push(
             am5.HeatLegend.new(root, {
                 orientation: "vertical",
-                startColor: am5.color(0xbd9fbb),
+                startColor: am5.color(0xe6d3e4),//0xbd9fbb
                 endColor: am5.color(0x875692),
                 startText: "Lowest",
                 endText: "Highest",
-                stepCount: 50
+                stepCount: 200
             })
         );
 
@@ -52,7 +52,7 @@ function loadGlobe(){
 
         //countries
         
-        let maxGlobe = world[Object.entries(world).reduce((a, b) => a[1]["reqs"] > b[1]["reqs"] ? a : b)[0]];
+        let maxGlobe = world[Object.entries(world).reduce((a, b) => a[1][""] > b[1]["reqs"] ? a : b)[0]];
         polygonSeries.set("heatRules", [{
             target: polygonSeries.mapPolygons.template,
             dataField: "value",
