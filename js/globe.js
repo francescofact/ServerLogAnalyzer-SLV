@@ -34,7 +34,7 @@ function loadGlobe(){
                 endColor: am5.color(0x875692),
                 startText: "Lowest",
                 endText: "Highest",
-                stepCount: 5
+                stepCount: 50
             })
         );
 
