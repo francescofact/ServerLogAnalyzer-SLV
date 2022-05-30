@@ -52,7 +52,7 @@ function loadGlobe(){
 
         //countries
         
-        let maxGlobe = world[Object.entries(world).reduce((a, b) => a[1][""] > b[1]["reqs"] ? a : b)[0]];
+        let maxGlobe = world[Object.entries(world).reduce((a, b) => a[1]["reqs"] > b[1]["reqs"] ? a : b)[0]];
         polygonSeries.set("heatRules", [{
             target: polygonSeries.mapPolygons.template,
             dataField: "value",
