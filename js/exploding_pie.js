@@ -151,8 +151,8 @@ function loadPies(country, index){
         
         setTimeout(function(){
             hideSmall(series, 5);
-            hideSmall(subSeries, 1);
-            hideSmall(subSeries2, 1);
+            hideSmall(subSeries, 2);
+            hideSmall(subSeries2, 2);
         }, 100)
     }); // end am5.ready()
     
