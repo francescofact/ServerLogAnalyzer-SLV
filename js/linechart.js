@@ -42,6 +42,9 @@ function loadLineChart(country, alldata){
                 "bots": kv[1]["bot"],
             });
         });
+        data.sort(function(a, b) {
+            return a["date"] - b["date"];
+        });
     
         // Create axes
         // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
