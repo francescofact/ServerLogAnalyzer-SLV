@@ -1,9 +1,13 @@
 var modalLC= null;
+var countryLC=null;
 function loadLineChart(country, alldata){
     am5.ready(function() {
         // Create root element
         if (country == "modal" && modalLC != null)
           modalLC.dispose();
+        
+        if (country != "modal" && country != "global" && countryLC != null)
+          countryLC.dispose();
         
         var root = am5.Root.new("linechart_"+country);
         root.setThemes([
@@ -12,6 +16,9 @@ function loadLineChart(country, alldata){
         if (country == "modal"){
           modalLC = root;
         }
+
+        if (country != "modal" && country != "global")
+          countryLC = root
         
         
         // Create chart
@@ -34,6 +41,7 @@ function loadLineChart(country, alldata){
 
 
         var data = [];
+        console.log(alldata)
         Object.entries(alldata).forEach(function(kv){
             data.push({
                 "date": stringToDate(kv[0], "dd/MM/yyyy", "/"),

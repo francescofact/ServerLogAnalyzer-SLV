@@ -8,6 +8,7 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'>
   <link rel="stylesheet" href="css/scrollranks.css">
   <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/bootstrap-essentials.min.css">
   <style>
     #chartdiv, #barcountries{
         width: 100% !important;
@@ -44,6 +45,16 @@
     .nav__title{
       color: #875692;
     }
+
+    .flagselected{
+      background-color: #28a745!important;
+      cursor: pointer;
+    }
+
+    .flagnotselected{
+      background-color: #cfcfcf!important;
+      cursor: pointer;
+    }
   </style>
 
 </head>
@@ -65,44 +76,11 @@
 
         <li role="presentation">
           <a href="#section1">
-            <span class="nav__counter">#1 <span class="nav__desc" id="cname_1"></span></span>
-            <h3 class="nav__title" id="cimg_1"></h3>
-            <p class="nav__body"><strong id="totreqs_1"></strong> total requests<br><strong id="creqs_1"></strong> unique visitors</p>
+            <span class="nav__counter">Country</span>
+            <h3 class="nav__title" id="cimg"></h3>
+            <p class="nav__body"></p>
           </a>
         </li>
-
-        <li role="presentation">
-          <a href="#section2">
-            <span class="nav__counter">#2 <span class="nav__desc" id="cname_2"></span></span>
-            <h3 class="nav__title" id="cimg_2"></h3>
-            <p class="nav__body"><strong id="totreqs_2"></strong> total requests<br><strong id="creqs_2"></strong> unique visitors</p>
-          </a>
-        </li>
-
-        <li role="presentation">
-          <a href="#section3">
-            <span class="nav__counter">#3 <span class="nav__desc" id="cname_3"></span></span>
-            <h3 class="nav__title" id="cimg_3"></h3>
-            <p class="nav__body"><strong id="totreqs_3"></strong> total requests<br><strong id="creqs_3"></strong> unique visitors</p>
-          </a>
-        </li>
-        
-        <li role="presentation">
-          <a href="#section4">
-            <span class="nav__counter">#4 <span class="nav__desc" id="cname_4"></span></span>
-            <h3 class="nav__title" id="cimg_4"></h3>
-            <p class="nav__body"><strong id="totreqs_4"></strong> total requests<br><strong id="creqs_4"></strong> unique visitors</p>
-          </a>
-        </li>
-        
-        <li role="presentation">
-          <a href="#section5">
-            <span class="nav__counter">#5 <span class="nav__desc" id="cname_5"></span></span>
-            <h3 class="nav__title" id="cimg_5"></h3>
-            <p class="nav__body"><strong id="totreqs_5"></strong> total requests<br><strong id="creqs_5"></strong> unique visitors</p>
-          </a>
-        </li>
-
       </ul>
     </nav>
 
@@ -152,6 +130,11 @@
     <section class="section section1" id="section1">
       <div class="row safepadding text-center">
         <div class="col-md-12 text-center">
+          <div id="countryselector" class="pt-5">
+            <h4>Click on a flag to change country</h4><br>
+            <ul class="avt nav-justified" style="padding-left: 0px; list-style-type: none;width:50%;display:inline-block" id="flagcontainer">
+           </ul>
+          </div>
           <h2>Requests</h2>
           <div id="linechart_1" class="linechart"></div>
         </div>
@@ -159,66 +142,6 @@
           <h2>Devices, OSs and Browsers</h2>
           <p>Select one device to get OSs and Browsers insights</p>
           <div id="expiechart_1" class="mychart"></div>
-        </div>
-        <button class="btn btn-primary seemore">See more analytics</button>
-      </div>
-    </section>
-
-    <section class="section section2" id="section2">
-      <div class="row safepadding text-center">
-        <div class="col-md-12 text-center">
-          <h2>Requests</h2>
-          <div id="linechart_2" class="linechart"></div>
-        </div>
-        <div class="col-md-12 text-center">
-          <h2>Devices, OSs and Browsers</h2>
-          <p>Select one device to get OSs and Browsers insights</p>
-          <div id="expiechart_2" class="mychart"></div>
-        </div>
-        <button class="btn btn-primary seemore">See more analytics</button>
-      </div>
-    </section>
-
-    <section class="section section3" id="section3">
-      <div class="row safepadding text-center">
-        <div class="col-md-12 text-center">
-          <h2>Requests</h2>
-          <div id="linechart_3" class="linechart"></div>
-        </div>
-        <div class="col-md-12 text-center">
-          <h2>Devices, OSs and Browsers</h2>
-          <p>Select one device to get OSs and Browsers insights</p>
-          <div id="expiechart_3" class="mychart"></div>
-        </div>
-        <button class="btn btn-primary seemore">See more analytics</button>
-      </div>
-    </section>
-
-    <section class="section section4" id="section4">
-      <div class="row safepadding text-center">
-        <div class="col-md-12 text-center">
-          <h2>Requests</h2>
-          <div id="linechart_4" class="linechart"></div>
-        </div>
-        <div class="col-md-12 text-center">
-          <h2>Devices, OSs and Browsers</h2>
-          <p>Select one device to get OSs and Browsers insights</p>
-          <div id="expiechart_4" class="mychart"></div>
-        </div>
-        <button class="btn btn-primary seemore">See more analytics</button>
-      </div>
-    </section>
-
-    <section class="section section5" id="section5">
-      <div class="row safepadding text-center">
-        <div class="col-md-12 text-center">
-          <h2>Requests</h2>
-          <div id="linechart_5" class="linechart"></div>
-        </div>
-        <div class="col-md-12 text-center">
-          <h2>Devices, OSs and Browsers</h2>
-          <p>Select one device to get OSs and Browsers insights</p>
-          <div id="expiechart_5" class="mychart"></div>
         </div>
         <button class="btn btn-primary seemore">See more analytics</button>
       </div>

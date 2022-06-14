@@ -1,10 +1,13 @@
 var modalPI = null;
+var countryPI = null;
 function loadPies(country, index){
     am5.ready(function() {
 
         // Create root element
         if (index == undefined && country != "global" && modalPI != null)
             modalPI.dispose();
+        if (index == 1 && country != "global" && countryPI != null)
+            countryPI.dispose();
         
         var root = am5.Root.new("expiechart_"+((index==undefined) ? ((country!="global") ? "modal" : "global") : index));
         root.setThemes([
@@ -13,6 +16,8 @@ function loadPies(country, index){
         if (index == undefined && country != "global"){
             modalPI = root;
         }
+        if (index == 1 && country != "global")
+            countryPI = root;
         
         var container = root.container.children.push(
             am5.Container.new(root, {

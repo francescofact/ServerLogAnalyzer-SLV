@@ -4,6 +4,7 @@ var dists;
 var requests;
 var devices;
 var statuses;
+var bests = [];
 
 am5.net.load("world.json").then(function (result) {
     let alldata = am5.JSONParser.parse(result.response);
@@ -78,21 +79,27 @@ function stringToDate(_date,_format,_delimiter){
 }
 
 function loadBestCountries(){
-    const bests = Object.fromEntries(
+    bests = Object.fromEntries(
         Object.entries(world).slice(0, 5)
     );
     Object.entries(bests).forEach(function(kv, index){
-        index += 1;
-        $("#cname_"+index).html('<img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png"/> ');
-        $("#cimg_"+index).html('<img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png"/> '+ kv[0]);
-        $("#creqs_"+index).text(kv[1]["unique"]);
-        $("#totreqs_"+index).text(kv[1]["reqs"]);
-        $("#section"+index+" .seemore").data("country", kv[0])
-        loadLineChart(index, requests[kv[0]])
-        //loadCountry(kv[0], index)
-        loadPies(kv[0], index)
+        $("#flagcontainer").append('<li class="text-center"><span class="avatar avatar-64 img-circle flagnotselected" data-index="'+kv[0]+'"><img src="https://flagcdn.com/36x27/'+kv[0].toLowerCase()+'.png" alt="'+kv[0]+'"></span><p>#'+(index+1)+'</p></li>')
     });
+    $(".flagnotselected").eq(0).click();
 }
+
+$("body").on("click", ".flagnotselected", function(){
+    $(".flagselected").removeClass("flagselected").addClass("flagnotselected");
+    $(this).removeClass("flagnotselected").addClass("flagselected");
+    let country = $(this).data("index");
+    let kv = bests[country];
+    console.log(kv)
+    $("#creqs_1").text(kv["unique"]);
+    $("#totreqs_1").text(kv["reqs"]);
+    $("#section1 .seemore").data("country",country)
+    loadLineChart(1, requests[country])
+    loadPies(country, 1)
+})
 
 function hideSmall(series, min){
     for (let i=0; i<series.labels.values.length; i++){
